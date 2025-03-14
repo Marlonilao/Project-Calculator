@@ -42,7 +42,7 @@ body {
     flex-grow: 1;
 }
 
-.button-container .zero {
+.button-container #zero {
     width: 135px;
 }
 
