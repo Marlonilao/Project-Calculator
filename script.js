@@ -42,10 +42,10 @@ ac.addEventListener('click' , (e) => {
 })
 const sign = document.querySelector('#sign');
 sign.addEventListener('click', (e) => {
-    if (display.textContent == +`${display.textContent}`) {
-        display.textContent = -`${display.textContent}`;
-    } else if (display.textContent == -`${display.textContent}`) {
-        display.textContent = +`${display.textContent}`;
+    if (display.textContent == Math.abs(`${display.textContent}`)) {
+        display.textContent = -Math.abs(`${display.textContent}`);
+    } else if (display.textContent == -Math.abs(`${display.textContent}`)) {
+        display.textContent = Math.abs(`${display.textContent}`);
     }
 })
 const percent = document.querySelector('#percent');
