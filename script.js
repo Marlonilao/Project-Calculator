@@ -11,12 +11,14 @@ function multiply(a,b) {
 }
 
 function divide(a,b) {
-    return a / b;
+    return (b == 0) ? 'Error' : a / b;
+
 }
 
 let a = null;
 let b = null;
 let operator = '';
+const operators = ['+','-','*','/'];
 
 
 function operate(a,operator,b){
@@ -39,34 +41,35 @@ ac.addEventListener('click' , (e) => {
     operator = '';
 })
 const sign = document.querySelector('#sign');
-let isNegative = false;
 sign.addEventListener('click', (e) => {
-    if (isNegative == false) {
-        isNegative = true;
-        const positiveDisplay = `+${display.textContent}`
-        display.textContent = positiveDisplay;
-    } else {
-        isNegative = false;
-        const negativeDisplay = `-${display.textContent}`
-        display.textContent = negativeDisplay;
+    if (display.textContent == +`${display.textContent}`) {
+        display.textContent = -`${display.textContent}`;
+    } else if (display.textContent == -`${display.textContent}`) {
+        display.textContent = +`${display.textContent}`;
     }
 })
 const percent = document.querySelector('#percent');
 percent.addEventListener('click', (e) => {
-    display.textContent = ''
+    display.textContent = +`${display.textContent}`/100;
 })
 // number buttons
 const seven = document.querySelector('#seven');
 seven.addEventListener('click', (e) => {
-    if (display.textContent == '+') {
+    if (operators.includes(display.textContent)) {
+        display.textContent = '7';
+    } else if (a != null && b == null && operator == '') {
+        a = null;
         display.textContent = '7';
     } else {
-        display.textContent += '7'
+        display.textContent += '7';
     }
 })
 const eight = document.querySelector('#eight');
 eight.addEventListener('click', (e) => {
-    if (display.textContent == '+') {
+    if (operators.includes(display.textContent)) {
+        display.textContent = '8';
+    } else if (a != null && b == null && operator == '') {
+        a = null;
         display.textContent = '8';
     } else {
     display.textContent += '8';
@@ -74,7 +77,10 @@ eight.addEventListener('click', (e) => {
 })
 const nine = document.querySelector('#nine');
 nine.addEventListener('click',(e) => {
-    if (display.textContent == '+') {
+    if (operators.includes(display.textContent)) {
+        display.textContent = '9';
+    } else if (a != null && b == null && operator == '') {
+        a = null;
         display.textContent = '9';
     } else {
     display.textContent += '9';
@@ -82,7 +88,10 @@ nine.addEventListener('click',(e) => {
 })
 const four = document.querySelector('#four');
 four.addEventListener('click' , (e) => {
-    if (display.textContent == '+' || display.textContent == `${operate(a,operator,b)}`) {
+    if (operators.includes(display.textContent)) {
+        display.textContent = '4';
+    } else if (a != null && b == null && operator == '') {
+        a = null;
         display.textContent = '4';
     } else {
     display.textContent += '4';
@@ -90,7 +99,10 @@ four.addEventListener('click' , (e) => {
 })
 const five = document.querySelector('#five');
 five.addEventListener('click' , (e) => {
-    if (display.textContent == '+') {
+    if (operators.includes(display.textContent)) {
+        display.textContent = '5';
+    } else if (a != null && b == null && operator == '') {
+        a = null;
         display.textContent = '5';
     } else {
     display.textContent += '5';
@@ -98,7 +110,10 @@ five.addEventListener('click' , (e) => {
 })
 const six = document.querySelector('#six');
 six.addEventListener('click', (e) => {
-    if (display.textContent == '+') {
+    if (operators.includes(display.textContent)) {
+        display.textContent = '6';
+    } else if (a != null && b == null && operator == '') {
+        a = null;
         display.textContent = '6';
     } else {
     display.textContent += '6';
@@ -106,7 +121,10 @@ six.addEventListener('click', (e) => {
 })
 const one = document.querySelector('#one');
 one.addEventListener('click' , (e) => {
-    if (display.textContent == '+') {
+    if (operators.includes(display.textContent)) {
+        display.textContent = '1';
+    } else if (a != null && b == null && operator == '') {
+        a = null;
         display.textContent = '1';
     } else {
     display.textContent += '1';
@@ -114,16 +132,22 @@ one.addEventListener('click' , (e) => {
 })
 const two = document.querySelector('#two');
 two.addEventListener('click' , (e) => {
-    if (display.textContent == '+') {
+    if (operators.includes(display.textContent)) {
         display.textContent = '2';
-    } else {
+    } else if (a != null && b == null && operator == '') {
+        a = null;
+        display.textContent = '2';
+    }  else {
     display.textContent += '2';
     }
 })
 
 const three = document.querySelector('#three');
 three.addEventListener('click', (e) => {
-    if (display.textContent == '+') {
+    if (operators.includes(display.textContent)) {
+        display.textContent = '3';
+    } else if (a != null && b == null && operator == '') {
+        a = null;
         display.textContent = '3';
     } else {
     display.textContent += '3';
@@ -132,11 +156,27 @@ three.addEventListener('click', (e) => {
 
 const zero = document.querySelector('#zero');
 zero.addEventListener('click' , (e) => {
-    if (display.textContent == '+') {
+    if (operators.includes(display.textContent)) {
+        display.textContent = '0';
+    } else if (a != null && b == null && operator == '') {
+        a = null;
         display.textContent = '0';
     } else {
     display.textContent += '0';
     }
+})
+
+const dot = document.querySelector('#dot');
+dot.addEventListener('click' , function eventHandler() {
+    if (display.textContent.includes('.')) {
+        
+    } else if (operators.includes(display.textContent)) {
+        display.textContent = ''
+        display.textContent = `${display.textContent}.`;
+    } else {
+    display.textContent = `${display.textContent}.`;
+    }
+
 })
 
 // operator buttons
@@ -144,8 +184,6 @@ const addition = document.querySelector('#addition');
 addition.addEventListener('click' , (e) => {
     operator = '+';
     (a == null) ? a = +`${display.textContent}` : b = +`${display.textContent}`;
-    console.log(a);
-    console.log(b);
     display.textContent = '+';
 
 })
@@ -163,7 +201,6 @@ multiplication.addEventListener('click',(e) => {
     operator = '*';
     (a == null) ? a = +`${display.textContent}` : b = +`${display.textContent}`;
     display.textContent = '*';
-    
 })
 
 const division = document.querySelector('#division');
@@ -177,10 +214,8 @@ division.addEventListener('click' , (e) => {
 const equal = document.querySelector('#equal');
 equal.addEventListener('click' , (e) => {
     b = +`${display.textContent}`;
-    display.textContent = `${operate(a,operator,b)}`;
-    a = +`${operate(a,operator,b)}`;
+    display.textContent = `${Math.round(operate(a,operator,b) * 100)/100}`;
+    a = +`${Math.round(operate(a,operator,b) * 100)/100}`;
     b = null;
     operator = '';
-    console.log(a);
-    console.log(b);
 })

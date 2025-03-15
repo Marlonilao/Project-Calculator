@@ -18,13 +18,20 @@ body {
     max-height: 450px;
     max-width: 320px;
     padding: 20px;
+    background-color: black;
 }
 
 .display {
     height: 80px;
     width: auto;
+    max-width: 17ch;
+    white-space: nowrap;
+    overflow: hidden;
     text-align: end;
-    font-size: xx-large;
+    font-size: 40px;
+    border: 1px solid black;
+    margin-bottom: 10px;
+    background-color: white;
 }
 
 .button-container {
@@ -40,9 +47,24 @@ body {
     height: 65px;
     width: 65px;
     flex-grow: 1;
+    font-size: x-large;
 }
 
 .button-container #zero {
     width: 135px;
+}
+
+#division,
+#multiplication,
+#subtraction,
+#addition,
+#equal {
+    background-color: orange;
+}
+
+#AC,
+#sign,
+#percent {
+    background-color: lightskyblue;
 }
 
